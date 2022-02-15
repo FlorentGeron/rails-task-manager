@@ -1,0 +1,19 @@
+<h1>Here are the pending tasks</h1>
+<div class="container">
+  <ul>
+    <%@tasks.each do |task|%>
+      <li><%=task[:title]%> - <%=task[:details]%></li>
+      <%= link_to task_path(task) do%>
+        <div class="btn btn-success">Edit</div>
+      <%end%>
+      <%= link_to task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } do%>
+        <div class="btn btn-danger">Delete</div>
+      <%end%>
+    <%end%>
+  </ul>
+</div>
+<%= link_to new_task_path do %>
+<div class="btn btn-primary">New Task</div>
+<%end%>
